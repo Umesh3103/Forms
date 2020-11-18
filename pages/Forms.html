@@ -11,16 +11,18 @@
         <header class="headerContainer"><h1>HTML 5 Form Input Fields</h1></header>
         <div>
             <label for="text">text input type for Name: </label>
-            <input type="text" id="text" name="text">
+            <input type="text" id="text" name="text" required>
             <error-output class="text-error" for="text"></error-output>
         </div>
         <div>
             <label for="pwd">password input type: </label>
-            <input type="password" id="pwd" name="pwd">
+            <input type="password" id="pwd" name="pwd" required>
+            <error-output class="password-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">email input type: </label>
             <input type="email" id="email" name="email">
+            <error-output class="email-error" for="email"></error-output>
         </div>
         <div>
             <label for="url">url input type</label>
@@ -68,6 +70,15 @@
                 textError.textContent = "";
             else textError.textContent = "Name is Incorrect";    
         });
+
+        const email = document.querySelector('#email');
+        const emailError = document.querySelector('.email-error');
+        email.oninput = function() {
+            let nameRegex = RegExp('^[0-9 a-z A-Z]+([_+-.]{0,1}[0-9 a-z A-Z]+[@][0-9 a-z A-Z]+[.][a-z A-Z]{2,4})([.][a-z A-Z]{2,4}){0,1}$');
+            if(nameRegex.test(email.value))
+                emailError.textContent = "";
+            else emailError.textContent = "Email is Invalid";
+        }
     </script>
 </body>
 </html>

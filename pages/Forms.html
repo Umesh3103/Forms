@@ -75,8 +75,8 @@
         const email = document.querySelector('#email');
         const emailError = document.querySelector('.email-error');
         email.oninput = function() {
-            let nameRegex = RegExp('^[0-9 a-z A-Z]+([_+-.]{0,1}[0-9 a-z A-Z]+[@][0-9 a-z A-Z]+[.][a-z A-Z]{2,4})([.][a-z A-Z]{2,4}){0,1}$');
-            if(nameRegex.test(email.value))
+            let emailRegex = RegExp('^[0-9 a-z A-Z]+([_+-.]{0,1}[0-9 a-z A-Z]+[@][0-9 a-z A-Z]+[.][a-z A-Z]{2,4})([.][a-z A-Z]{2,4}){0,1}$');
+            if(emailRegex.test(email.value))
                 emailError.textContent = "";
             else emailError.textContent = "Email is Invalid";
         }
@@ -84,10 +84,19 @@
         const tel = document.querySelector('#tel');
         const telError = document.querySelector('.tel-error');
         tel.oninput = function() {
-            let nameRegex = RegExp('^[0-9]{2}\\s[6-9]{1}[0-9]{9}$');
-            if(nameRegex.test(tel.value))
+            let telRegex = RegExp('^[0-9]{2}\\s[6-9]{1}[0-9]{9}$');
+            if(telRegex.test(tel.value))
                 telError.textContent = "";
             else telError.textContent = "Telephone number is Invalid";
+        }
+
+        const pwd = document.querySelector('#pwd');
+        const pwdError = document.querySelector('.password-error');
+        pwd.oninput = function() {
+            let pwdRegex = RegExp('^(?=.*[A-Z])(?=.*[0-9])(?=.*[_+-.@#$])([a-z A-Z 0-9]).{5,}$');
+            if(pwdRegex.test(pwd.value))
+                pwdError.textContent = "";
+            else pwdError.textContent = "Password should match all the conditions";    
         }
     </script>
 </body>
